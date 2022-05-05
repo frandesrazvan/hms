@@ -1,0 +1,96 @@
+login:
+      welcome: Welcome to Hotel Management System, please login!
+      username: Username
+      password: Password
+      no_account: Don't have an account? Please
+      register: Register
+      register_as_client: Registrations will be done as Client.
+      login: Login
+      login_title: Log in!
+homepage:
+      welcome:
+            welcome: Welcome
+            to: Welcome to our little application
+      to_do_next: What would you like to do next? Please choose from the menu.
+header:
+      my_account: My account
+      user_management:
+            user_management: User Management
+            add_user:
+                  add_user: Add User
+                  email: Email
+                  first_name: First Name
+                  last_name: Last Name
+                  role:
+                        role: Role
+                        choose: Please choose Role
+                  date_of_birth:
+                        date_of_birth: Date of Birth
+                        day: Day
+                        month:
+                              month: Month
+                              1: January
+                              2: February
+                              3: March
+                              4: April
+                              5: May
+                              6: June
+                              7: July
+                              8: August
+                              9: September
+                              10: October
+                              11: November
+                              12: December
+                        year: Year
+                  birthdate: Birthdate
+                  registration_date: Registration Date
+                  gender:
+                        gender: Gender
+                        male: Male
+                        female: Female
+                  hotel:
+                        hotel: Hotel
+                        choose: Please choose Hotel
+                  submit: Submit
+            search:
+                  by:
+                        hotel: Search by Hotel all users
+            include:
+                  users: include all users option
+            sorting: pagination, sorting, edit => redirect, remove => confirmation
+            items: items in total
+            edit: Edit
+            remove: Remove
+      hotel_management:
+            hotel_management: Hotel Management
+            hotel_information: Hotel Information
+            room_management: Room Management
+            reservation_management: Reservation Management
+            system: Hotel Management System
+      bookings: Bookings
+      logout: Logout
+register:
+      registration_title: Client Registration
+      optional: Optional
+      confirm_password: Confirm password
+      confirmation: User created
+      registration_confirmation: Registration Confirmation
+      registration_activation: Welcome
+      registration_activated: Your account is active.
+      congratulations: Congratulations, the registration has been succesful!
+      activation_message: An activation message has been sent to your e-mail.
+      great_day: Have a great day!
+      thank_you: Thank you for your registration!
+      following_data: You have registered using the following data
+      welcome: Welcome to PitechPlus Hotel Management System!
+my_account:
+      title: My account
+roles:
+      client: Client
+      employee: Employee
+      manager: Manager
+      owner: Owner
+movement:
+      back: Back
+      previous: Previous
+      next: Next

@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="content general">
+    <div class="container-fluid">
+        <div class="col-md-12 col-sm-12 col-xs-12 no-lr-padding">
+            <div class="wrapper">
+                <div class="col-md-12 col-sm-12 col-xs-12 no-lr-padding title">
+                    <a href="{{ path(constant('App\\Controller\\HomePageController::HOME_ROUTE_NAME')) }}" class="back">{{ 'movement.back'|trans }}</a>
+                    <h1 class="text-center">{{ 'header.user_management.user_management'|trans }}</h1>
+                </div>
+                <div class="col-md-12 col-xs-12 no-lr-padding text-center search">
+                    <span>{{ 'header.user_management.search.by.hotel'|trans }}</span>
+                    <div class="styled-input">
+                        <select class="selective" id="hotelsDropDown">
+                            <option>{{ constant('App\\Enum\\StaffEnum::SHOW_ALL') }}</option>
+                             {% for hotel in hotels_list %}
+                                <option value="{{ hotel.id }}">{{ hotel.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <span class="light">({{ 'header.user_management.include.users'|trans }})</span>
+                    <div class="col-md-12 col-xs-12 no-lr-padding text-center">
+                        <span class="light">({{ 'header.user_management.sorting'|trans }})</span>
+                    </div>
+                </div>
+                <div class="table-paginated">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>{{ 'header.user_management.add_user.first_name'|trans }}<span class="sort-icon"></span></th>
+                                <th>{{ 'header.user_management.add_user.last_name'|trans }}<span class="sort-icon"></span></th>
+                                <th>{{ 'header.user_management.add_user.role.role'|trans }}<span class="sort-icon"></span></th>
+                                <th>{{ 'header.user_management.add_user.email'|trans }}<span class="sort-icon"></span></th>
+                                <th>{{ 'header.user_management.add_user.birthdate'|trans }}<span class="sort-icon"></span></th>
+                                <th>{{ 'header.user_management.add_user.registration_date'|trans }}<span class="sort-icon"></span></th>
+                                <th class="text-center">{{ 'header.user_management.edit'|trans }}</th>
+                                <th class="text-center">{{ 'header.user_management.remove'|trans }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for staff in hotel_staff %}
+                            <tr>
+                                <td>{{ staff.firstName }}</td>
+                                <td>{{ staff.lastName }}</td>
+                                <td>{{ staff.roles|first }}</td>
+                                <td>{{ staff.email }}</td>
+                                <td>{{ staff.dateOfBirth|date('Y-m-d') }}</td>
+                                <td>{{ staff.registrationDate|date('Y-m-d') }}</td>
+                                <td class="text-center"><a href="04-edit-user.php"><i class="fa fa-edit"></i></a></td>
+                                <td class="text-center"><a href=""><i id="{{ staff.id }}" class="fa fa-trash"></i></a></td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-items" data-user-management="{{ userManagement }}" data-user-management-delete="{{ userManagementDelete }}">{{items}} {{ 'header.user_management.items'|trans }}</div>
+                    <nav class="table-pagination">
+                        <p class="hidden" id="numberStaff">{{ items }}</p>
+                        <p class="hidden" id="numberOnPage">{{ constant('App\\Enum\\StaffEnum::NUMBER_USERS_ON_PAGE') }}</p>
+                        <ul class="pagination">
+                        </ul>
+                    </nav>
+                    <div class="col-md-12 col-xs-12 no-lr-padding">
+                        <a href="{{ path(constant('App\\Controller\\UserController::ADD_USER_ROUTE_NAME')) }}" class="btn submit pull-right">{{ 'header.user_management.add_user.add_user'|trans }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

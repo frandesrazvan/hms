@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{'login.login_title'|trans}}
+{% endblock %}
+
+{% block body %}
+    <center>
+        <div class="content login">
+            <div class="container-fluid">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="wrapper">
+                            <div class="container-small">
+                                <div class="col-md-12 col-sm-12 col-xs-12 no-lr-padding title">
+                                    <h1 class="text-center">{{ 'login.welcome'|trans }}</h1>
+                                </div>
+                                <form class="login-form" method="post">
+                                    {% if error %}
+                                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                    {% endif %}
+                                    <div class="col-md-12 col-xs-12 no-lr-padding">
+                                        <div class="styled-input">
+                                            <label for="inputUsername">{{ 'login.username'|trans }}</label>
+                                            <div class="rel">
+                                                <input type="text" value="{{ lastUsername }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 no-lr-padding">
+                                        <div class="styled-input">
+                                            <label for="inputPassword">{{ 'login.password'|trans }}</label>
+                                            <div class="rel">
+                                                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="_csrf_token"
+                                               value="{{ csrf_token('authenticate') }}"
+                                        >
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 no-lr-padding">
+                                        <p>{{'login.no_account'|trans}} <a href="{{ path(constant('App\\Controller\\UserController::REGISTER_ROUTE_NAME')) }}" class="register">{{ 'login.register'|trans }}.</a></p>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 no-lr-padding button-wrapper">
+                                        <a href="{{ path(constant('App\\Controller\\UserController::REGISTER_ROUTE_NAME')) }}" class="register-link">{{ 'login.register'|trans }}</a>
+                                        <button type="submit" class="btn submit pull-right">{{ 'login.login'|trans }}</button>
+                                    </div>
+                                </form>
+                                <div class="col-md-12 col-xs-12 no-lr-padding text-center login-form-info">
+                                    <p class="light">{{ 'login.register_as_client'|trans }}.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+{%  endblock %}

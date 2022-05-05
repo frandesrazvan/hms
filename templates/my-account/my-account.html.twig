@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'my_account.title'|trans }}
+{% endblock %}
+
+{% block body %}
+    <div class="content general">
+        <div class="container-fluid">
+            <div class="col-md-12 col-sm-12 col-xs-12 no-lr-padding">
+                <div class="row">
+                    <div class="wrapper">
+                        <div class="col-md-12 col-sm-12 col-xs-12 no-lr-padding title">
+                            <a href="{{ path(constant('App\\Controller\\HomePageController::HOME_ROUTE_NAME')) }}"
+                               class="back">{{ 'movement.back' | trans }}</a>
+                            <h1 class="text-center">My account</h1>
+                        </div>
+                        {{ form_start(form) }}
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class='user-info'>
+                                <div class='user-info-image'>
+                                    <img id="user_photo" src="{{ asset('uploads/photos/'~user.getProfilePicture) }}" alt='user info'/>
+                                </div>
+                                <div class="delete_photo">
+                                    <button type="button" id="delete_photo_button" class="btn">Delete photo</button>
+                                </div>
+                                <div class="add_photo">
+                                    <button type="button" id="add_photo_button" class="btn">Add photo</button>
+                                </div>
+                                <div class="styled-input add_photo_browser">
+                                    {{ form_row(form.profilePicture) }}
+                                </div>
+                                <p class='user-info-fName'>{{ user.getFirstName }}</p>
+                                <p class='user-info-lName'>{{ user.getLastName }}</p>
+                                <p class='user-info-role' id="photoP">{{ user.getRoles()[0] }}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-md-12 col-xs-12 no-lr-padding">
+                                <div class="styled-input">
+                                    {{ form_label(form.email) }}
+                                    <div class="rel">
+                                        {{ form_widget(form.email, {'attr':{'class' : 'editable'}}) }}
+                                        {{ form_errors(form.email) }}
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-xs-12 no-lr-padding">
+                                <div class="styled-input">
+                                    {{ form_label(form.address) }}
+                                    <div class="rel">
+                                        {{ form_widget(form.address, {'attr':{'class' : 'editable'}}) }}
+                                        {{ form_errors(form.address) }}
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-xs-12 no-lr-padding">
+                                <div class="col-md-12 col-xs-12 no-lr-padding">
+                                    <label class="custom-label">{{ form_label(form.dateOfBirth) }}</label>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12 no-lr-padding">
+                                    <div class="styled-input">
+                                        {{ form_widget(form.dateOfBirth, {'attr':{'class' : 'editable date-input'}}) }}
+                                        {{ form_errors(form.dateOfBirth) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-xs-12 no-lr-padding gender-block">
+                                <label class="custom-label large">{{ form_label(form.gender) }}</label>
+                                <div class="custom-form">
+                                   {% for choice in form.gender.vars.choices %}
+                                    <div class="col-md-3 col-sm-3 col-xs-6 no-lr-padding">
+                                        <div class="rel">
+                                            {{ form_widget(form.gender[loop.index0],{'attr':{'disabled':true}}) }}
+                                            {{ form_errors(form.gender) }}
+                                            {{ form_label(form.gender[loop.index0],null,{'label_attr':{'class':'custom-label'}}) }}
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                {#<div class="custom-form">
+                                    {{ form_widget(form.gender, {'attr':{'class' : 'editable'}}) }}
+                                    {{ form_errors(form.gender) }}
+                                </div>#}
+                            </div>
+                            <div class="col-md-12 col-xs-12 no-lr-padding">
+                                <div class="styled-input">
+                                    {{ form_label(form.bio) }}
+                                    <div class="rel">
+                                        {{ form_widget(form.bio, {'attr':{'class' : 'editable'}}) }}
+                                        {{ form_errors(form.bio) }}
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-xs-12 account-btn pull-right no-lr-padding">
+                                <div class="beforeEdit">
+                                    <button type="button" id="edit_button" class="btn edit pull-right">Edit</button>
+                                </div>
+                                <div class="editing hidden">
+                                    {{ form_row(form.submit,{'attr':{'class':'btn submit pull-right'}}) }}
+                                    <button type="button" id="cancel_button" class="btn edit pull-right">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

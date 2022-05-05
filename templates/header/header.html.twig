@@ -1,0 +1,63 @@
+{% set route_name = app.request.attributes.get('_route') %}
+
+<nav id="header" class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button id="nav-icon1" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <a href="{{ path('homepage') }}" class="logo">
+                {{ 'header.hotel_management.system'|trans }}
+            </a>
+        </div>
+        <div class="collapse navbar-collapse dropdown" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class ="nav-item {{ route_name == constant('App\\Controller\\MyAccountController::MY_ACCOUNT_ROUTE_NAME') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ path(constant('App\\Controller\\MyAccountController::MY_ACCOUNT_ROUTE_NAME')) }}">{{ 'header.my_account'|trans }}</a>
+                </li>
+                {% if is_granted('ROLE_OWNER') %}
+                    <li class ="nav-item {{ route_name == constant('App\\Controller\\UserManagementController::USER_MANAGEMENT_ROUTE_NAME') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ path(constant('App\\Controller\\UserManagementController::USER_MANAGEMENT_ROUTE_NAME')) }}">{{ 'header.user_management.user_management'|trans }}</a>
+                    </li>
+                    <li>
+                        <a class="nav-link">{{ 'header.hotel_management.hotel_management'|trans }}</a>
+                    </li>
+                    <ul class="dropdown-menu">
+                        <li class="nav-item {{ route_name == constant('App\\Controller\\HotelManagementController::HOTEL_INFORMATION_ROUTE_NAME') ? 'active' : '' }}">
+                            <a href="{{ path(constant('App\\Controller\\HotelManagementController::HOTEL_INFORMATION_ROUTE_NAME')) }}" class="nav-link dropdown" >{{ 'header.hotel_management.hotel_information'|trans }}</a>
+                        </li>
+                        <li class="nav-item {{ route_name == constant('App\\Controller\\HotelManagementController::ROOM_MANAGEMENT_ROUTE_NAME') ? 'active' : '' }}">
+                            <a href="{{ path(constant('App\\Controller\\HotelManagementController::ROOM_MANAGEMENT_ROUTE_NAME')) }}" class="nav-link dropdown" >{{ 'header.hotel_management.room_management'|trans }}</a>
+                        </li>
+                        <li class="nav-item {{ route_name == constant('App\\Controller\\HotelManagementController::RESERVATION_MANAGEMENT_ROUTE_NAME') ? 'active' : '' }}">
+                            <a href="{{ path(constant('App\\Controller\\HotelManagementController::RESERVATION_MANAGEMENT_ROUTE_NAME')) }}" class="dropdown nav-link" >{{ 'header.hotel_management.reservation_management'|trans }}</a>
+                        </li>
+                    </ul>
+                {% endif %}
+                {% if is_granted('ROLE_MANAGER') %}
+                    <li class ="nav-item {{ route_name == constant('App\\Controller\\UserManagementController::USER_MANAGEMENT_ROUTE_NAME') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ path(constant('App\\Controller\\UserManagementController::USER_MANAGEMENT_ROUTE_NAME')) }}">{{ 'header.user_management.user_management'|trans }}</a>
+                    </li>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown">{{ 'header.hotel_management.hotel_management'|trans }}</a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item {{ route_name == constant('App\\Controller\\HotelManagementController::RESERVATION_MANAGEMENT_ROUTE_NAME') ? 'active' : '' }}">
+                                <a href="{{ path(constant('App\\Controller\\HotelManagementController::RESERVATION_MANAGEMENT_ROUTE_NAME')) }}" class="dropdown nav-link" >{{ 'header.hotel_management.reservation_management'|trans }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                {% endif %}
+                {% if is_granted('ROLE_CLIENT') %}
+                <li class ="nav-item {{ route_name == constant('App\\Controller\\BookingsController::BOOKINGS_ROUTE_NAME') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ path(constant('App\\Controller\\BookingsController::BOOKINGS_ROUTE_NAME')) }}">{{ 'header.bookings'|trans }}</a></li>
+                {% endif %}
+                <li>
+                    <a href="{{ path(constant('App\\Controller\\SecurityController::LOGOUT_ROUTE_NAME')) }}" class="btn success">{{ 'header.logout'|trans }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

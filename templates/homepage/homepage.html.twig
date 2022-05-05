@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<center>
+    <div class="content general">
+        <div class="container-fluid">
+            <div class="col-md-12 col-sm-12 col-xs-12 no-lr-padding">
+                <div class="row">
+                    <div class="wrapper homepage">
+                        <div class="col-md-12 col-sm-12 col-xs-12 no-lr-padding title">
+                            <h1 class="text-center">{{ 'homepage.welcome.welcome'|trans }}, {{ lastUsername }}!</h1>
+                        </div>
+                        <p class="light text-center">{{ 'homepage.welcome.to'|trans }}</p>
+                        <p class="margin-top-small text-center">{{ 'homepage.to_do_next'|trans }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>
+{% endblock %}

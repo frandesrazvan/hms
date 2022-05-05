@@ -1,0 +1,125 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="content general">
+        <div class="container-fluid">
+            <div class="col-md-12 col-sm-12 col-xs-12 no-lr-padding">
+                <div class="row">
+                    <div class="wrapper">
+                        {% block head %}
+                            {% for message in app.flashes('success') %}
+                                <div class="alert alert-success">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endblock head %}
+                        <div class="col-md-12 col-sm-12 col-xs-12 no-lr-padding title">
+                            <a href="{{ path(constant('App\\Controller\\UserManagementController::USER_MANAGEMENT_ROUTE_NAME')) }}" class="back">{{ 'movement.back'|trans }}</a>
+                            <h1 class="text-center">{{ 'header.user_management.add_user.add_user'|trans }} <span>({{ 'roles.owner'|trans }})</span></h1>
+                        </div>
+                        {{ form_start(form) }}
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="col-md-12 col-xs-12 no-lr-padding">
+                                    <div class="styled-input">
+                                        {{ form_label(form.username) }}
+                                        <div class="rel">
+                                            {{ form_widget(form.username) }}
+                                            {{ form_errors(form.username) }}
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12 no-lr-padding">
+                                    <div class="styled-input">
+                                        {{ form_label(form.password.first) }}
+                                        <div class="rel">
+                                            {{ form_widget(form.password.first) }}
+                                            {{ form_errors(form.password.first) }}
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12 no-lr-padding">
+                                    <div class="styled-input">
+                                        {{ form_label(form.password.second) }}
+                                        <div class="rel">
+                                            {{ form_widget(form.password.second) }}
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12 no-lr-padding">
+                                    <div class="styled-input">
+                                        {{ form_label(form.email) }}
+                                        <div class="rel">
+                                            {{ form_widget(form.email) }}
+                                            {{ form_errors(form.email) }}
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12 no-lr-padding">
+                                    <div class="styled-input">
+                                        {{ form_label(form.firstName) }}
+                                        <div class="rel">
+                                            {{ form_widget(form.firstName) }}
+                                            {{ form_errors(form.firstName) }}
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="col-md-12 col-xs-12 no-lr-padding">
+                                    <div class="styled-input">
+                                        {{ form_label(form.role) }}
+                                        <div class="custom-form">
+                                            {{ form_widget(form.role) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12 no-lr-padding">
+                                    <div class="col-md-12 col-xs-12 no-lr-padding">
+                                        <label class="custom-label">{{ form_label(form.dateOfBirth) }}</label>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 no-lr-padding">
+                                        <div class="styled-input">
+                                            {{ form_widget(form.dateOfBirth)}}
+                                        </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12 no-lr-padding gender-block">
+                                    <label class="custom-label large">{{ form_label(form.gender) }}</label>
+                                    <div class="custom-form">
+                                        {{ form_widget(form.gender) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12 no-lr-padding">
+                                    <div class="styled-input">
+                                        {{ form_label(form.hotel) }}
+                                        <div class="custom-form">
+                                            {{ form_widget(form.hotel) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12 no-lr-padding">
+                                    <div class="styled-input">
+                                        {{ form_label(form.lastName) }}
+                                        <div class="rel">
+                                            {{ form_widget(form.lastName) }}
+                                            {{ form_errors(form.lastName) }}
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-xs-12">
+                                {{ form_row(form.submit,{'attr':{'class':'btn submit pull-right'}}) }}
+                            </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

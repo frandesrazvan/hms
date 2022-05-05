@@ -1,0 +1,33 @@
+login:
+  welcome: Bine ai venit la Hotel Management System, te rog autentifica-te!
+  username: Porecla
+  password: Parola
+  no_account: Nu ai cont? Te rog
+  register: Inregistreaza-te
+  register_as_client: Inregistrarile vor fi facute ca si Client.
+  login: Autentifica-te
+  login_title: Autentificare!
+homepage:
+  welcome:
+    welcome: Bine ati venit
+    to: Bine ati venit la mica noastra aplicatie
+  to_do_next: Ce v-ar placea sa faceti in continuare? Va rugam alegeti din meniu.
+header:
+  my_account: Contul meu
+  user_management: Managementul utilizatorilor
+  hotel_management:
+    hotel_management: Managementul hotelului
+    system: Sistemul de management al hotelului
+  bookings: Rezervari
+  logout: Deconectare
+my_account:
+  title: Contul meu
+register:
+  registration_title: Client Registration
+  back: Inapoi
+  optional: optional
+  confirmation: User created
+  registration_confirmation: Registration Confirmation
+  congratulations: Congratulations, the registration has been succesful!
+  activation_message: An activation message has been sent to your e-mail.
+  welcome: Welcome to PitechPlus Hotel Management System!

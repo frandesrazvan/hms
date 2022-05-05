@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+     {{'register.registration_title'|trans}}
+{% endblock %}
+
+{% block body %}
+        <div class="content general">
+            <div class="container-fluid">
+                <div class="col-md-12 col-sm-12 col-xs-12 no-lr-padding">
+                    <div class="row">
+                        <div class="wrapper">
+                            <div class="col-md-12 col-xs-12 no-lr-padding text-center title">
+                                <a href="{{ path(constant('App\\Controller\\SecurityController::LOGIN_ROUTE_NAME')) }}" class="back">{{ 'movement.back' | trans }}</a>
+                                <h1 class="text-center">{{ 'register.registration_title' | trans }}</h1>
+                            </div>
+                            {{ form_start(form) }}
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-12 col-xs-12 no-lr-padding">
+                                        <div class="styled-input">
+                                            {{ form_label(form.username) }}
+                                            <div class="rel">
+                                                {{ form_widget(form.username) }}
+                                                {{ form_errors(form.username) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 no-lr-padding">
+                                        <div class="styled-input">
+                                            {{ form_label(form.password.first) }}
+                                            <div class="rel">
+                                                {{ form_widget(form.password.first) }}
+                                                {{ form_errors(form.password.first) }}
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 no-lr-padding">
+                                        <div class="styled-input">
+                                            {{ form_label(form.password.second) }}
+                                            <div class="rel">
+                                                {{ form_widget(form.password.second) }}
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 no-lr-padding">
+                                        <div class="styled-input">
+                                            {{ form_label(form.email) }}
+                                            <div class="rel">
+                                                {{ form_widget(form.email) }}
+                                                {{ form_errors(form.email) }}
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 no-lr-padding">
+                                        <div class="styled-input">
+                                            {{ form_label(form.address)}}<span class="light">({{ 'register.optional' | trans }})</span>
+                                            <div class="rel">
+                                                {{ form_widget(form.address) }}
+                                                {{ form_errors(form.address) }}
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-12 col-xs-12 no-lr-padding">
+                                        <div class="styled-input">
+                                            {{ form_label(form.lastName) }}
+                                            <div class="rel">
+                                                {{ form_widget(form.lastName) }}
+                                                {{ form_errors(form.lastName) }}
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 no-lr-padding">
+                                        <div class="styled-input">
+                                            {{ form_label(form.firstName) }}
+                                            <div class="rel">
+                                                {{ form_widget(form.firstName) }}
+                                                {{ form_errors(form.firstName) }}
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 no-lr-padding">
+                                        <div class="col-md-12 col-xs-12 no-lr-padding">
+                                            <label class="custom-label">{{ form_label(form.dateOfBirth) }}</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 col-xs-12 no-lr-padding">
+                                            <div class="styled-input">
+                                                {{ form_widget(form.dateOfBirth)}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 no-lr-padding gender-block">
+                                        <label class="custom-label large">{{ form_label(form.gender) }}</label>
+                                        <div class="custom-form">
+                                            {{ form_widget(form.gender) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 no-lr-padding">
+                                        <div class="styled-input">
+                                            {{ form_label(form.bio) }} <span class="light">({{ 'register.optional' | trans }})</span>
+                                            {{ form_widget(form.bio) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 no-lr-padding">
+                                        <div class="styled-input">
+                                            {{ form_label(form.profilePicture) }} <span class="light">({{ 'register.optional' | trans }})</span>
+                                            {{ form_widget(form.profilePicture) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12">
+                                    {{ form_row(form.submit,{'attr':{'class':'btn submit pull-right'}}) }}
+                                </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{%  endblock %}
